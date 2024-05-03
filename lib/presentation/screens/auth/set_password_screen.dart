@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart' show BuildContext, Center, Colors, Column, CrossAxisAlignment, EdgeInsets, ElevatedButton, FontWeight, Form, FormState, GlobalKey, Icon, IconButton, Icons, InputDecoration, Key, MainAxisAlignment, MaterialPageRoute, Navigator, Padding, Row, Scaffold, SizedBox, State, StatefulWidget, Text, TextButton, TextEditingController, TextFormField, TextInputType, TextStyle, Theme, Widget;
 import 'package:flutter_svg/svg.dart';
-import 'package:task_manager/presentation/screens/pin_verification_screen.dart';
-import 'package:task_manager/presentation/screens/sign_up_screen.dart';
+import 'package:task_manager/presentation/screens/auth/pin_verification_screen.dart';
+import 'package:task_manager/presentation/screens/auth/sign_up_screen.dart';
 import 'package:task_manager/presentation/utils/app_colors.dart';
 import 'package:task_manager/presentation/widget/background_widget.dart';
 

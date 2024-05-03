@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart' show BorderRadius, BuildContext, Center, Colors, Column, CrossAxisAlignment, EdgeInsets, ElevatedButton, FontWeight, Form, FormState, GlobalKey, Icon, Icons, InputDecoration, Key, MainAxisAlignment, MaterialPageRoute, Navigator, Padding, Row, Scaffold, SizedBox, State, StatefulWidget, Text, TextButton, TextEditingController, TextFormField, TextInputType, TextStyle, Theme, Widget;
+import 'package:flutter/material.dart'
+    show BorderRadius, BuildContext, Center, Colors, Column, CrossAxisAlignment, EdgeInsets, ElevatedButton, FontWeight, Form, FormState, GlobalKey, Icon, Icons, InputDecoration, Key, MainAxisAlignment, MaterialPageRoute, Navigator, Padding, Row, Scaffold, SizedBox, State, StatefulWidget, Text, TextButton, TextEditingController, TextFormField, TextInputType, TextStyle, Theme, Widget;
 import 'package:flutter_svg/svg.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:task_manager/presentation/screens/set_password_screen.dart';
-import 'package:task_manager/presentation/screens/sign_up_screen.dart';
+import 'package:task_manager/presentation/screens/auth/set_password_screen.dart';
+import 'package:task_manager/presentation/screens/auth/sign_up_screen.dart';
 import 'package:task_manager/presentation/utils/app_colors.dart';
 import 'package:task_manager/presentation/widget/background_widget.dart';
 
-import '../utils/assets_path.dart';
 class PinVerificationScreen extends StatefulWidget {
   const PinVerificationScreen({Key? key}) : super(key: key);
 

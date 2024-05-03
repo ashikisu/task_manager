@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager/presentation/screens/new_task_screen.dart';
 import 'package:task_manager/presentation/utils/app_colors.dart';
 class MainBottomNavScreen extends StatefulWidget {
   const MainBottomNavScreen({Key? key}) : super(key: key);
@@ -9,9 +10,16 @@ class MainBottomNavScreen extends StatefulWidget {
 
 class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
   int _currenSelectedIndex=0;
+  final List<Widget> _screens=[
+    const NewTaskScreen(),
+    const NewTaskScreen(),
+    const NewTaskScreen(),
+    const NewTaskScreen(),
+  ];
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
+      body: _screens[_currenSelectedIndex],
 
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currenSelectedIndex,

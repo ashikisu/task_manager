@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_manager/presentation/utils/app_colors.dart';
-import 'presentation/screens/splash_screen.dart';
+import 'presentation/screens/auth/splash_screen.dart';
 
 class TaskManager extends StatelessWidget {
   const TaskManager({Key? key}) : super(key: key);

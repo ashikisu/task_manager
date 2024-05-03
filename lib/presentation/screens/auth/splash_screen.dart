@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:task_manager/presentation/screens/sing_in_screen.dart';
-import 'package:task_manager/presentation/utils/assets_path.dart';
+import 'package:task_manager/presentation/screens/auth/sing_in_screen.dart';
+
 import 'package:task_manager/presentation/widget/background_widget.dart';
 
 class SplashScreen extends StatefulWidget {

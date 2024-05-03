@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:task_manager/presentation/screens/email_verification_screen.dart';
+import 'package:task_manager/presentation/screens/auth/email_verification_screen.dart';
+import 'package:task_manager/presentation/screens/auth/sign_up_screen.dart';
 import 'package:task_manager/presentation/screens/main_bottom_nav_screen.dart';
-import 'package:task_manager/presentation/screens/sign_up_screen.dart';
-import 'package:task_manager/presentation/utils/app_colors.dart';
 import 'package:task_manager/presentation/widget/background_widget.dart';
 
 import '../utils/assets_path.dart';
