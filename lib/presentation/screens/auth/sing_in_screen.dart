@@ -7,7 +7,6 @@ import 'package:task_manager/presentation/controllers/auth_controller.dart';
 import 'package:task_manager/presentation/screens/auth/email_verification_screen.dart';
 import 'package:task_manager/presentation/screens/auth/sign_up_screen.dart';
 import 'package:task_manager/presentation/screens/main_bottom_nav_screen.dart';
-import 'package:task_manager/presentation/screens/new_task_screen.dart';
 import '../../widget/background_widget.dart';
 import '../../widget/snack_bar_message.dart';
 
@@ -86,10 +85,9 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const NewTaskScreen()),
-                          );
+                          if (_formKey.currentState!.validate()) {
+                            _signIn();
+                          }
                         },
                         child: const Icon(Icons.arrow_circle_right_outlined),
                       ),
