@@ -1,147 +1,122 @@
-import 'package:flutter/material.dart'
-    show BorderRadius, BuildContext, Center, Colors, Column, CrossAxisAlignment, EdgeInsets, ElevatedButton, FontWeight, Form, FormState, GlobalKey, Icon, Icons, InputDecoration, Key, MainAxisAlignment, MaterialPageRoute, Navigator, Padding, Row, Scaffold, SizedBox, State, StatefulWidget, Text, TextButton, TextEditingController, TextFormField, TextInputType, TextStyle, Theme, Widget;
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:task_manager/presentation/screens/auth/set_password_screen.dart';
-import 'package:task_manager/presentation/screens/auth/sign_up_screen.dart';
+import 'package:task_manager/presentation/screens/auth/sing_in_screen.dart';
 import 'package:task_manager/presentation/utils/app_colors.dart';
-import 'package:task_manager/presentation/widget/background_widget.dart';
 
+import '../../widget/background_widget.dart';
 class PinVerificationScreen extends StatefulWidget {
-  const PinVerificationScreen({Key? key}) : super(key: key);
+  const PinVerificationScreen({super.key});
 
   @override
   State<PinVerificationScreen> createState() => _PinVerificationScreenState();
 }
 
 class _PinVerificationScreenState extends State<PinVerificationScreen> {
-  final TextEditingController _emailTEController=TextEditingController();
-  final GlobalKey<FormState> _formKey= GlobalKey<FormState>();
+  final TextEditingController _pinTEController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:BackgroundWidget(
-
+      body: BackgroundWidget(
+        child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(24),
             child: Form(
               key: _formKey,
-
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(
-                    height: 150,
-
+                  const SizedBox(height: 100),
+                  Text(
+                    'Pin Verification',
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
-                    Text('PIN Verification',
-                      style:Theme.of(context).textTheme.titleLarge,
-                    ),
-
                   const SizedBox(
                     height: 4,
                   ),
-                  Text("Enter 6 digit Verfication code we have sent to your email adress",
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey,
+                  const Text(
+                    'A 6 digits verification code will be sent to your email address',
+                    style: TextStyle(color: Colors.grey, fontSize: 15),
                   ),
-
-                  ),
-
                   const SizedBox(
                     height: 24,
                   ),
                   PinCodeTextField(
+                    controller: _pinTEController,
                     length: 6,
                     obscureText: false,
                     animationType: AnimationType.fade,
+                    keyboardType: TextInputType.number,
                     pinTheme: PinTheme(
-                      shape: PinCodeFieldShape.box,
-                      borderRadius: BorderRadius.circular(5),
-                      fieldHeight: 50,
-                      fieldWidth: 40,
-                      activeFillColor: Colors.white,
-
-                      inactiveFillColor: Colors.transparent,
-                      inactiveColor: AppColors.themeColor,
-                    ),
-                    animationDuration: Duration(milliseconds: 300),
-
+                        shape: PinCodeFieldShape.box,
+                        borderRadius: BorderRadius.circular(5),
+                        fieldHeight: 50,
+                        fieldWidth: 40,
+                        activeFillColor: Colors.white,
+                        inactiveFillColor: Colors.white,
+                        inactiveColor: AppColors.themeColor,
+                        selectedFillColor: Colors.white),
+                    animationDuration: const Duration(milliseconds: 300),
+                    backgroundColor: Colors.transparent,
                     enableActiveFill: true,
-
-                    onCompleted: (v) {
-                      print("Completed");
-                    },
-                    onChanged: (value) {
-
-                    },
-                    appContext:context,
-
+                    onCompleted: (v) {},
+                    onChanged: (value) {},
+                    appContext: context,
                   ),
-
-                  const SizedBox(height: 16,),
-
+                  const SizedBox(
+                    height: 16,
+                  ),
                   SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                          onPressed: (){
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context)=>const SetPasswordScreen()),
-                            );
-
-                          },
-                          child:const Text("Verify",
-                            style: TextStyle(
-                              color:Colors.white,
-                            ),
-                          ),
-                      ),
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                const SetPasswordScreen()));
+                      },
+                      child: const Text('Verify'),
+                    ),
                   ),
-
-                 const SizedBox(
-                    height: 48,
+                  const SizedBox(
+                    height: 32,
                   ),
-
-
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const
-                      Text(" Have account?",
-                      style: TextStyle(
-                        color: Colors.black54,
-                        fontSize: 16,
-                      ),),
+                      const Text(
+                        'Have account?',
+                        style: TextStyle(fontSize: 16, color: Colors.black54),
+                      ),
                       TextButton(
-
-                          onPressed: (){
-                            Navigator.pop(context);
-                          },
-                          child: const Text('Sign In'),
+                        onPressed: () {
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const SignInScreen()),
+                                  (route) => false);
+                        },
+                        child: const Text(
+                          'Sign in',
+                        ),
                       ),
                     ],
-
-                  ),
-
-
-
+                  )
                 ],
               ),
             ),
           ),
-
-
-      ) ,
-
+        ),
+      ),
     );
   }
+
   @override
-  void dispose(){
-    _emailTEController.dispose();
+  void dispose() {
+    _pinTEController.dispose();
     super.dispose();
   }
 }
-

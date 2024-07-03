@@ -1,9 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:task_manager/app.dart';
-
-import '../screens/auth/sing_in_screen.dart';
-import '../utils/app_colors.dart';
+import 'package:task_manager/presentation/screens/auth/sing_in_screen.dart';
+import 'package:task_manager/presentation/utils/app_colors.dart';
 
 PreferredSizeWidget get profileAppBar{
 
@@ -28,7 +26,7 @@ PreferredSizeWidget get profileAppBar{
           // Navigate from current page (context) to a new page (NewPage)
           Navigator.pushAndRemoveUntil(
             TaskManager.navigatorKey.currentState!.context,
-            MaterialPageRoute(builder: (context) => SingInScreen()),(route)=>false
+            MaterialPageRoute(builder: (context) => SignInScreen()),(route)=>false
           );
 
 

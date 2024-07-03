@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../widget/background_widget.dart';
-import '../widget/profile_bar.dart';
-import '../widget/task_card.dart';
+import '../widget/profile_app_bar.dart';
 
 class CancelledTaskScreen extends StatefulWidget {
   const CancelledTaskScreen({super.key});
@@ -17,16 +16,13 @@ class _CancelledTaskScreenState extends State<CancelledTaskScreen> {
     return Scaffold(
       appBar: profileAppBar,
       body: BackgroundWidget(
-          child:ListView.builder(
-              itemCount: 6,
-              itemBuilder: (context,index){
-
-                return TaskCard();
-              }
-          )
+        child: ListView.builder(
+          itemCount: 5,
+          itemBuilder: (context, index) {
+            // return const TaskCard();
+          },
+        ),
       ),
-
-
     );
   }
 }

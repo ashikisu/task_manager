@@ -1,10 +1,6 @@
-import 'package:flutter/material.dart';
+class AssetsPath {
+  static const String _imageBasePath = 'assets/images';
 
-class AssetsPath{
-  static const String _baseImagePath='assets/images';
-
-  static String backgroundSvg='$_baseImagePath/background.svg';
-
-
-
+  static String backgroundSvg = '$_imageBasePath/background.svg';
+  static String logoSvg = '$_imageBasePath/logo.svg';
 }

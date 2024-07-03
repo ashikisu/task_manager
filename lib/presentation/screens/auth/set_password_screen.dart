@@ -1,150 +1,111 @@
-import 'package:flutter/material.dart' show BuildContext, Center, Colors, Column, CrossAxisAlignment, EdgeInsets, ElevatedButton, FontWeight, Form, FormState, GlobalKey, Icon, IconButton, Icons, InputDecoration, Key, MainAxisAlignment, MaterialPageRoute, Navigator, Padding, Row, Scaffold, SizedBox, State, StatefulWidget, Text, TextButton, TextEditingController, TextFormField, TextInputType, TextStyle, Theme, Widget;
-import 'package:flutter_svg/svg.dart';
-import 'package:task_manager/presentation/screens/auth/pin_verification_screen.dart';
-import 'package:task_manager/presentation/screens/auth/sign_up_screen.dart';
-import 'package:task_manager/presentation/utils/app_colors.dart';
-import 'package:task_manager/presentation/widget/background_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:task_manager/presentation/screens/auth/sing_in_screen.dart';
+import '../../widget/background_widget.dart';
 
-import '../utils/assets_path.dart';
 class SetPasswordScreen extends StatefulWidget {
-  const SetPasswordScreen({Key? key}) : super(key: key);
+  const SetPasswordScreen({super.key});
 
   @override
   State<SetPasswordScreen> createState() => _SetPasswordScreenState();
 }
 
 class _SetPasswordScreenState extends State<SetPasswordScreen> {
-  final TextEditingController _passwordTEController= TextEditingController();
-  final GlobalKey<FormState> _formKey= GlobalKey<FormState>();
-   bool _passwordVisible = true;
+  final TextEditingController _passwordTEController = TextEditingController();
+  final TextEditingController _confirmPasswordTEController =
+  TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body:BackgroundWidget(
-
+      body: BackgroundWidget(
+        child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(24),
             child: Form(
               key: _formKey,
-
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(
-                    height: 150,
-
+                  const SizedBox(height: 100),
+                  Text(
+                    'Set Password',
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
-                    Text('Set Password',
-                      style:Theme.of(context).textTheme.titleLarge,
-                    ),
-
                   const SizedBox(
                     height: 4,
                   ),
-                  Text("Mnimum length Password 8 character with letter and numbber combination",
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: Colors.grey,
-                  ),
-
-                  ),
-                  TextFormField(
-                    keyboardType: TextInputType.visiblePassword,
-                    obscureText: _passwordVisible,
-                    decoration: InputDecoration(
-                      hintText: 'Password',
-                      suffixIcon:IconButton(
-                          onPressed: (){
-                            setState(() {
-                              _passwordVisible=!_passwordVisible;
-                            });
-                          },
-
-
-                          icon: Icon(_passwordVisible? Icons.visibility_off:Icons.visibility),
-                      )
-
-
-                    ),
-
+                  const Text(
+                    'Minimum 8 characters with letters and numbers combination',
+                    style: TextStyle(color: Colors.grey, fontSize: 15),
                   ),
                   const SizedBox(
-                    height: 15,
+                    height: 24,
                   ),
                   TextFormField(
-                    keyboardType: TextInputType.visiblePassword,
-                    decoration: InputDecoration(
-                      hintText: 'Confirm Password',
-                        suffixIcon:IconButton(
-                          onPressed: (){
-                            setState(() {
-                              _passwordVisible=!_passwordVisible;
-                            });
-                          },
-
-
-                          icon: Icon(_passwordVisible? Icons.visibility_off:Icons.visibility),
-                        )
-
+                    controller: _passwordTEController,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: const InputDecoration(
+                      hintText: 'Password',
                     ),
-
                   ),
-
-
-                  SizedBox(height: 16,),
-
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  TextFormField(
+                    controller: _confirmPasswordTEController,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: const InputDecoration(
+                      hintText: 'Confirm Password',
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 16,
+                  ),
                   SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(onPressed: (){},
-                          child: const Text('Confirm',
-                            style: TextStyle(
-                              color:Colors.white,
-                            ),
-                          ),
-                      )
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: const Text('Confirm'),
+                    ),
                   ),
-
-                 const SizedBox(
-                    height: 48,
+                  const SizedBox(
+                    height: 32,
                   ),
-
-
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const
-                      Text(" Have account?",
-                      style: TextStyle(
-                        color: Colors.black54,
-                        fontSize: 16,
-                      ),),
+                      const Text(
+                        'Have account?',
+                        style: TextStyle(fontSize: 16, color: Colors.black54),
+                      ),
                       TextButton(
-
-                          onPressed: (){
-                            Navigator.pop(context);
-                          },
-                          child: const Text('Sign In'),
+                        onPressed: () {
+                          Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const SignInScreen()),
+                                  (route) => false);
+                        },
+                        child: const Text(
+                          'Sign in',
+                        ),
                       ),
                     ],
-
-                  ),
-
-
-
+                  )
                 ],
               ),
             ),
           ),
-
-
-      ) ,
-
+        ),
+      ),
     );
   }
+
   @override
-  void dispose(){
+  void dispose() {
     _passwordTEController.dispose();
+    _confirmPasswordTEController.dispose();
     super.dispose();
   }
 }
-

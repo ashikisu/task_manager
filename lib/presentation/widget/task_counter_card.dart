@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 
 class TaskCounterCard extends StatelessWidget {
   const TaskCounterCard({
-    super.key, required this.amount, required this.title,
+    super.key,
+    required this.amount,
+    required this.title,
   });
 
   final int amount;
@@ -12,20 +14,22 @@ class TaskCounterCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-
-        padding: EdgeInsets.symmetric(horizontal: 21,vertical: 16),
+        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 24),
         child: Column(
           children: [
-            Text('$amount',
-              style: TextStyle(
+            Text(
+              '$amount',
+              style: const TextStyle(
+                fontSize: 24,
                 fontWeight: FontWeight.bold,
-                fontSize: 12,
-
-              ),),
-            Text('$title',style: TextStyle(
-                color: Colors.grey
-            ),),
-
+              ),
+            ),
+            Text(
+              title,
+              style: const TextStyle(
+                color: Colors.grey,
+              ),
+            ),
           ],
         ),
       ),
